@@ -1,3 +1,5 @@
+// Класс для ошибок на основе базового класса Error
+
 module.exports = class ApiError extends Error {
     status;
     errors;

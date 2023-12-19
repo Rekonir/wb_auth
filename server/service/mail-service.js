@@ -1,7 +1,10 @@
 const nodemailer = require('nodemailer')
 
+// Логика контроллера по почте (Сервис почты)
+
 class MailService {
 
+    // Инициализация почтового клиента фирмы
     constructor() {
         this.transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
@@ -14,6 +17,7 @@ class MailService {
         })
     }
 
+    // Функция отправки сообщения на почту клиента
     async sendActivationMail(to, link) {
         await this.transporter.sendMail({
             from: `${process.env.SMTP_USER}`,
