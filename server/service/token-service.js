@@ -14,7 +14,7 @@ class TokenSerevice {
             refreshToken
         }
     }
-    // Проверка на время ликвидность Access токен
+    // Проверка на время и ликвидность Access токен
     validateAccessToken(token) {
         try {
             const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET)

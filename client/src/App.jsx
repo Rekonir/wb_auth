@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import LoginForm from "./components/LoginForm";
+import WBKyesForm from "./components/WBKeysForm";
 import { Context } from "./main";
 import { observer } from "mobx-react-lite";
 import UserService from "./services/UserService";
@@ -23,16 +24,12 @@ function App() {
   }, []);
 
   if (store.isLoading) {
-    return <p>Загрузка...</p>
+    return <p>Загрузка...</p>;
   }
   if (!store.isAuth) {
     return (
       <>
         <LoginForm />
-        <button onClick={getUsers}>Получить список пользователей</button>
-        {users.map((user) => (
-          <h2 key={user.email}>{user.email}</h2>
-        ))}
       </>
     );
   }
@@ -44,7 +41,7 @@ function App() {
           : `Добро пожаловать в прототип`}
       </h1>
       <h2>
-        {store.user.isActivated 
+        {store.user.isActivated
           ? `Почта ${store.user.email} подтверждена`
           : `Пожалуйста, подтвердите свою почту`}
       </h2>
@@ -53,6 +50,7 @@ function App() {
       {users.map((user) => (
         <h2 key={user.email}>{user.email}</h2>
       ))}
+      <WBKyesForm />
     </>
   );
 }
